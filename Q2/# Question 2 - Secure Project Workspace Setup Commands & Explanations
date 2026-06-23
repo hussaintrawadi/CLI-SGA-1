@@ -1,0 +1,46 @@
+# Question 2 - Secure Project Workspace Setup
+
+## Command 1
+$ mkdir -p ~/CLI-Graded-Assignment/Q2
+$ cd ~/CLI-Graded-Assignment/Q2
+
+Explanation: Created the Q2 working directory and moved into it.
+
+## Command 2
+$ mkdir -p ProjectWorkspace/Documents ProjectWorkspace/Reports
+
+Explanation: Created the workspace folder with two subfolders, Documents and Reports.
+
+## Command 3
+$ ls -R ProjectWorkspace
+ProjectWorkspace:
+Documents  Reports
+
+ProjectWorkspace/Documents:
+
+ProjectWorkspace/Reports:
+
+Explanation: Listed the workspace structure recursively, confirming the two subfolders were created.
+
+## Command 4
+$ ls -ld ProjectWorkspace
+drwxr-xr-x 4 coder coder 4 Jun 23 11:45 ProjectWorkspace
+
+Explanation: Showed the permissions before modification. By default the owner has full access while group and others can read and enter.
+
+## Command 5
+$ chmod 700 ProjectWorkspace
+
+Explanation: Changed permissions so that only the owner has access. The 7 gives the owner read, write, and execute, and the two zeros remove all access for group and others.
+
+## Command 6
+$ ls -ld ProjectWorkspace
+drwx------ 4 coder coder 4 Jun 23 11:45 ProjectWorkspace
+
+Explanation: Showed the permissions after modification. The folder is now drwx------, meaning only the owner can access it.
+
+## Command 7
+$ umask
+0022
+
+Explanation: Displayed the default permission mask. 0022 removes write permission for group and others on newly created files and folders.
