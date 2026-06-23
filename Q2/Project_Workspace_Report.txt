@@ -1,0 +1,23 @@
+Secure Project Workspace Report
+
+1. Directory structure created
+ProjectWorkspace
+  - Documents
+  - Reports
+
+2. Permission before modification
+drwxr-xr-x (owner: read/write/execute; group and others; read and execute).
+These are the default permissions the system assigned when the folder was created.
+
+3. Permission after modification
+drwx------ set using chmod 700 ProjectWorkspace
+Owner: read, write, execute. Group: no access. Others: no access.
+
+4. Ownership details
+Owner: coder. Group: coder.
+
+5. Unmask value
+unmask output: 0022. This mask removes write permission for the group and others on new files and folders by default.
+
+6. Security Purpose
+chmod 700 restricts the workplace so only the owner can read, modify or enter it. This protects project files rom being accessed or changed by other user on the system.

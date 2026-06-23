@@ -1,0 +1,20 @@
+File access and I/O investigation report
+
+1. Open files
+The lsof command was not available in this sandbox. Instead, /proc/self/fdwas used o inspect the open file descriptors f the current shell process, hich serves the same purpose.
+
+2. File descriptors
+ls -l /proc/self/fd showed he standard descriptors:
+0 = standard input (stdin)
+1 = standard output (stdout)
+2 = standard error (stderr)
+All there were connected to the terminal device /dev/pts/0
+
+3. Output and error redirection
+The > operator redirected the error message into error.txt when listing a file that does not exsist ("cannot access 'nonexistentialfile': No such file directory:).
+
+4. Resource limits
+unlimit -a displayed system limits. Key values: open file (-n) 1048576, stack size 8192 KB, max user processes unlimited, core file size unlimited.
+
+5. How linux manages file I/O
+Linux represents every open file with and stream with a numbered file descriptor. Program reads from descriptor 0 and write to 1, while errors go to 2. Redirection operates > and 2> point these descriptors at files instead of the terminal, which is how output and errors can be saved separately.

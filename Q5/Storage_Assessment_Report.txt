@@ -1,0 +1,18 @@
+Storage health assesment report
+
+1. Available storage devices
+The lsblk showed the block device. Disk present: nvme0n1 (96G), nvme1n1 (400G), nvme2n1 (20G), nvme3n1 (1000G) plus several loop devices
+
+2. Mounted file system
+The df- h command showed mounted filesystems. The root filesystem / is 13G total, 3.7G used and 9.3G available at 29% usage
+3. Disk usage
+THe du -sh command showed the home directory uses 22M of space
+
+4. Inode utilization
+The df -i command showed inode usage. The root filesystem has about 19.6 millon inodes, with 133564 used (1% utilization)
+
+5. Storage health
+The storage system is healthy. Disk usage and inode usage are both low, so there is plenty of free spaces and free inodes
+
+6. Recomendations
+Monitor disk and inode usage regularly, remove unnecessary file and archive old data to keep utilization low 

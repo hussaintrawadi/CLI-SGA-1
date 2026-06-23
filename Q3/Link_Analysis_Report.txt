@@ -1,0 +1,28 @@
+File system and link analysis report
+
+1. Inode Numbers
+origina.txt and hardlink.txt oth had inode 229508 (some inode - same fill data)
+symlink.txt had a different inode 32458 (it is a seperate small file)
+
+2. Hard Link vs Symbolic Link
+Hard Link (hardlink.txt):
+- Shares the same inode as the original
+- Points directly to the file data
+- Keeps working even after the original file is deleted
+
+Symbollic Link (symlink.txt)
+- Has its own inode
+- Stores the path/name of the arget, not the data.
+- Breaks if the original file is removed
+
+3. Effect od deleting the original
+After deleting original.txt:
+- cat hardlink.txt still printed the contents (data preserved)
+- cat symlink.txt failed with "No such file directory" (link became broken)
+- In ld -li the hard link's link count dropped from 2 to 1 , and the symlink showed as broken
+
+4. Metadata
+The stat command showed inode number, size, permissions, lin count, owner, group and timestamp for each file
+
+5. Conclusion
+A hard link is another name for the same file data and survives deletion of the original. A symbolic link s a shortcut to a filename and breaks when the target is removed.

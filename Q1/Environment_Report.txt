@@ -1,0 +1,16 @@
+Environment Verification Report
+
+1. User identity - id and groups
+uid=1000(coder), gid=1000(coder), groups: coder, sudo.
+
+2. Active shell - echo $SHELL
+/bin/bash
+
+3. Current directory - pwd
+/home/coder/CLI-Graded-Assignment/Q1
+
+4. Directory listing
+Q1 folder was empty except for the . and .. entries.
+
+5. Network verification - ping -c 4 google.com
+google.com resolved to an IP. but packets were blocked by the sandbox (100% packet loss). DNS worked, ICMP is restricted here.
