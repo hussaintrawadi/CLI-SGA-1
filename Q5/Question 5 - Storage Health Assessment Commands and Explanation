@@ -1,0 +1,51 @@
+# Question 5 - Storage Health Assessment
+
+## Command 1
+$ mkdir -p ~/CLI-Graded-Assignment/Q5
+$ cd ~/CLI-Graded-Assignment/Q5
+
+Explanation: Created the Q5 working directory and moved into it.
+
+## Command 2
+$ lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0         7:0    0  27.7M  1 loop
+(...loop1 through loop12...)
+nvme0n1     259:0    0    96G  0 disk
+|-nvme0n1p1 259:2    0  95.9G  0 part
+|-nvme0n1p14 259:3   0     4M  0 part
+|-nvme0n1p15 259:4   0   106M  0 part
+nvme1n1     259:1    0   400G  0 disk
+|-nvme1n1p1 259:11   0   400G  0 part
+|-nvme1n1p9 259:12   0     8M  0 part
+nvme2n1     259:5    0    20G  0 disk
+|-nvme2n1p1 259:6    0    20G  0 part
+|-nvme2n1p9 259:7    0     8M  0 part
+nvme3n1     259:8    0  1000G  0 disk
+|-nvme3n1p1 259:9    0  1000G  0 part
+|-nvme3n1p9 259:10   0     8M  0 part
+
+Explanation: Listed all block devices and partitions. The disks present are nvme0n1 (96G), nvme1n1 (400G), nvme2n1 (20G), and nvme3n1 (1000G), along with several loop devices.
+
+## Command 3
+$ df -h
+Filesystem                                                          Size  Used Avail Use% Mounted on
+dockerPool/d0f86f47b464c82b2e8c58f55493fd014a5720954d3ac724aed...   13G  3.7G  9.3G  29% /
+tmpfs                                                                64M     0   64M   0% /dev
+shm                                                                  64M     0   64M   0% /dev/shm
+dockerPool                                                          468G  1.9G  467G   1% /etc/hosts
+
+Explanation: Showed mounted filesystems with sizes in human-readable form. The root filesystem / is 13G total, 3.7G used, 9.3G available, at 29% usage.
+
+## Command 4
+$ du -sh ~
+22M     /home/coder
+
+Explanation: Summarized the disk usage of the home directory, which uses 22M of space.
+
+## Command 5
+$ df -i
+Filesystem                                                           Inodes  IUsed     IFree IUse% Mounted on
+dockerPool/d0f86f47b464c82b2e8c58f55493fd014a5720954d3ac724aed...  19634328 133564  19500764    1% /
+
+Explanation: Showed inode usage. The root filesystem has about 19.6 million inodes total, with 133564 used, which is only 1% utilization.
