@@ -1,0 +1,52 @@
+# Question 1 - Linux Environment Verification
+
+## Command 1
+$ mkdir -p ~/CLI-Graded-Assignment/Q1
+$ cd ~/CLI-Graded-Assignment/Q1
+
+Explanation: Created the Q1 working directory and moved into it.
+
+## Command 2
+$ id
+uid=1000(coder) gid=1000(coder) groups=1000(coder),27(sudo)
+
+Explanation: Displayed the user identity. The UID and GID are 1000 (coder), and the user belongs to the coder and sudo groups.
+
+## Command 3
+$ groups
+coder sudo
+
+Explanation: Listed the group memberships of the current user: coder and sudo.
+
+## Command 4
+$ echo $SHELL
+/bin/bash
+
+Explanation: Showed the currently active shell, which is /bin/bash.
+
+## Command 5
+$ pwd
+/home/coder/CLI-Graded-Assignment/Q1
+
+Explanation: Printed the absolute path of the current working directory.
+
+## Command 6
+$ ls -la
+total 1
+drwxr-xr-x 2 coder coder 2 Jun 23 11:31 .
+drwxr-xr-x 3 coder coder 3 Jun 23 11:31 ..
+
+Explanation: Listed all files including hidden ones in long format. The folder was newly created, so it only contained the . and .. entries.
+
+## Command 7
+$ ping -c 4 google.com
+PING google.com (142.250.31.100) 56(84) bytes of data.
+From ip-172-18-0-1.ec2.internal (172.18.0.1) icmp_seq=1 Destination Port Unreachable
+From ip-172-18-0-1.ec2.internal (172.18.0.1) icmp_seq=2 Destination Port Unreachable
+From ip-172-18-0-1.ec2.internal (172.18.0.1) icmp_seq=3 Destination Port Unreachable
+From ip-172-18-0-1.ec2.internal (172.18.0.1) icmp_seq=4 Destination Port Unreachable
+
+--- google.com ping statistics ---
+4 packets transmitted, 0 received, +4 errors, 100% packet loss, time 3052ms
+
+Explanation: Tested network connectivity. The hostname resolved to an IP address, but all packets were blocked by the sandbox firewall (100% packet loss). This shows DNS resolution works while ICMP traffic is restricted in this environment.
