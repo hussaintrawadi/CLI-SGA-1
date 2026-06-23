@@ -1,0 +1,58 @@
+# Question 4 - File Access and I/O Investigation
+
+## Command 1
+$ mkdir -p ~/CLI-Graded-Assignment/Q4
+$ cd ~/CLI-Graded-Assignment/Q4
+
+Explanation: Created the Q4 working directory and moved into it.
+
+## Command 2
+$ lsof | head
+bash: lsof: command not found
+
+Explanation: The lsof command is not installed in this sandbox, so /proc/self/fd was used instead to inspect open file descriptors.
+
+## Command 3
+$ ls -l /proc/self/fd
+total 0
+lrwx------ 1 coder coder 64 Jun 23 12:26 0 -> /dev/pts/0
+lrwx------ 1 coder coder 64 Jun 23 12:26 1 -> /dev/pts/0
+lrwx------ 1 coder coder 64 Jun 23 12:26 2 -> /dev/pts/0
+lr-x------ 1 coder coder 64 Jun 23 12:26 3 -> /proc/675/fd
+
+Explanation: Showed the open file descriptors of the current shell. 0 is standard input, 1 is standard output, and 2 is standard error, all connected to the terminal device /dev/pts/0.
+
+## Command 4
+$ echo "Linux I/O Test" > output.txt
+$ cat output.txt
+Linux I/O Test
+
+Explanation: Used the > operator to redirect normal output into output.txt, then displayed the file to confirm.
+
+## Command 5
+$ ls nonexistentfile 2> error.txt
+$ cat error.txt
+ls: cannot access 'nonexistentfile': No such file or directory
+
+Explanation: Used the 2> operator to redirect the error message (standard error) into error.txt instead of the screen, then displayed the captured error.
+
+## Command 6
+$ ulimit -a
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 1019933
+max locked memory       (kbytes, -l) 8192
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1048576
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+Explanation: Displayed system resource limits. Notable values include open files limited to 1048576, stack size 8192 KB, and unlimited max user processes.
