@@ -1,0 +1,65 @@
+# Question 3 - File System and Link Analysis
+
+## Command 1
+$ mkdir -p ~/CLI-Graded-Assignment/Q3
+$ cd ~/CLI-Graded-Assignment/Q3
+
+Explanation: Created the Q3 working directory and moved into it.
+
+## Command 2
+$ echo "This is the original file" > original.txt
+$ cat original.txt
+This is the original file
+
+Explanation: Created the original file and displayed its contents to confirm.
+
+## Command 3
+$ ln original.txt hardlink.txt
+
+Explanation: Created a hard link, a second name pointing to the same file data.
+
+## Command 4
+$ ln -s original.txt symlink.txt
+
+Explanation: Created a symbolic link, a shortcut file that points to the path of original.txt.
+
+## Command 5
+$ ls -li
+total 2
+229508 -rw-r--r-- 2 coder coder 26 Jun 23 12:02 hardlink.txt
+229508 -rw-r--r-- 2 coder coder 26 Jun 23 12:02 original.txt
+232458 lrwxrwxrwx 1 coder coder 12 Jun 23 12:04 symlink.txt -> original.txt
+
+Explanation: Listed files with inode numbers. original.txt and hardlink.txt share inode 229508 (same data), while symlink.txt has a different inode 232458 and points to original.txt.
+
+## Command 6
+$ stat original.txt
+$ stat hardlink.txt
+$ stat symlink.txt
+
+Explanation: Displayed detailed metadata for each file. original.txt and hardlink.txt both show inode 229508 with link count 2, while symlink.txt shows inode 232458, type symbolic link, with link count 1.
+
+## Command 7
+$ rm original.txt
+
+Explanation: Deleted the original file to test the effect on both links.
+
+## Command 8
+$ cat hardlink.txt
+This is the original file
+
+Explanation: The hard link still works because it points to the file data (inode 229508), which still exists.
+
+## Command 9
+$ cat symlink.txt
+cat: symlink.txt: No such file or directory
+
+Explanation: The symbolic link is now broken because it pointed to the filename original.txt, which no longer exists.
+
+## Command 10
+$ ls -li
+total 1
+229508 -rw-r--r-- 1 coder coder 26 Jun 23 12:02 hardlink.txt
+232458 lrwxrwxrwx 1 coder coder 12 Jun 23 12:04 symlink.txt -> original.txt
+
+Explanation: After deletion, the hard link's link count dropped from 2 to 1, and the symlink shows as broken (its target no longer exists).
